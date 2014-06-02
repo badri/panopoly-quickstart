@@ -34,13 +34,13 @@ if [ ! -d "${OPENSHIFT_DATA_DIR}downloads/current" ]
 then
   mkdir -p ${OPENSHIFT_TMP_DIR}drupal
 
-  echo "Download and install the latest stable version of Drupal"
+  echo "Download and install the latest stable version of Panopoly"
   echo
 
   mkdir -p ${OPENSHIFT_DATA_DIR}downloads
-  if ! drush dl drupal --destination=${OPENSHIFT_DATA_DIR}downloads --yes
+  if ! drush dl panopoly --destination=${OPENSHIFT_DATA_DIR}downloads --yes
   then
-    echo "ERROR: Unable download and install Drupal."
+    echo "ERROR: Unable download and install Panopoly."
     exit 7
   fi
 
@@ -61,10 +61,10 @@ then
 
   patch ${DRUPAL_INSTALL_DIR}/.htaccess < ${OPENSHIFT_REPO_DIR}.openshift/.htaccess.patch
 
-  echo "Drupal installed to $DRUPAL_INSTALL_DIR"
+  echo "Panopoly installed to $DRUPAL_INSTALL_DIR"
 else
   DRUPAL_INSTALL_DIR=$(readlink -f ${OPENSHIFT_DATA_DIR}downloads/current)
-  echo "Drupal is already installed at $DRUPAL_INSTALL_DIR"
+  echo "Panopoly is already installed at $DRUPAL_INSTALL_DIR"
 fi
 
 echo
